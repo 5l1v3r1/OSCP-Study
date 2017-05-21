@@ -6,3 +6,4 @@ apt-get dist-upgrade -y
 apt-get autoclean -y
 apt-get clean -y
 msfupdate
+wpscan --update
