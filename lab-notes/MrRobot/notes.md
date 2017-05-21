@@ -1,4 +1,4 @@
-bottomReconnaissance:
+Reconnaissance:
 
 root@kali:~/mrrobt# netdiscover -r 192.168.118.0/24
 
