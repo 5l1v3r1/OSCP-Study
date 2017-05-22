@@ -27,6 +27,12 @@ chmod +x unix-privesc-check
 ./unix-privesc-check detailed > out.txt
 grep WARNING out.txt
 
+curl -O https://raw.githubusercontent.com/rebootuser/LinEnum/master/LinEnum.sh
+
+
 
 nfspy -o server=192.168.1.124:/home,hide,allow_other,ro,intr /mnt
 fusermount -u /mnt
+
+
+https://github.com/cornerpirate/socat-shell
