@@ -2,16 +2,16 @@
 import sys
 from argparse import ArgumentParser
 
-/*
+'''
 
 Code and influences taken from:
 
 https://github.com/codingo/Reconnoitre
 https://github.com/1N3/Sn1per
 
-*/
+'''
 
-def print_banner:
+def print_banner():
     print("Banner")
 
 
@@ -24,7 +24,6 @@ def main():
     parser.add_argument("--dns",        dest="find_dns_servers", action="store_true", help="Find DNS servers from a list of targets.", default=False)
     parser.add_argument("--services",   dest="perform_service_scan", action="store_true", help="Perform service scan over targets.", default=False)
     parser.add_argument("--hostnames",  dest="hostname_scan", action="store_true", help="Attempt to discover target hostnames and write to 0-name.txt and hostnames.txt.", default=False)
-    parser.add_argument("--snmp",       dest="perform_snmp_walk", action="store_true", help="Perform service scan over targets.", default=False)
     parser.add_argument("--quick",      dest="quick",   action="store_true", required=False, help="Move to the next target after performing a quick scan and writing first-round recommendations.", default=False)
     parser.add_argument("--quiet",      dest="quiet",   action="store_true", help="Supress banner and headers to limit to comma dilimeted results only.", default=False)
     parser.add_argument("--exec",       dest="follow",  action="store_true", help="Execute shell comamnds from recommendations as they are discovered. Likely to lead to very long execute times depending on the wordlist being used.", default=False)
