@@ -2,12 +2,42 @@
 import sys
 from argparse import ArgumentParser
 
+from ping_sweeper import ping_sweeper
+from find_dns import find_dns
+from service_scan import service_scan
+from hostname_scan import hostname_scan
+# from snmp_walk import snmp_walk
+
+
 '''
 
 Code and influences taken from:
 
 https://github.com/codingo/Reconnoitre
 https://github.com/1N3/Sn1per
+
+whatweb
+searchsploit --nmap $LOOT_DIR/nmap/nmap-$TARGET.xml
+
+nmap -A -sV -T5 -Pn -p 513 --script=rlogin* $TARGET
+nmap -A -sV -Pn -T5 -p 512 --script=rexec* $TARGET
+
+enum4linux
+
+nmap -A -sV -Pn -T5 --script=ms-sql* -p 1433 $TARGET
+
+nmap -A -sV -Pn --script=mysql* -p 3306 $TARGET
+mysql -u root -h $TARGET -e 'SHOW DATABASES; SELECT Host,User,Password FROM mysql.user;'
+
+nmap -A -sV -Pn -T5 --script=rdp-* -p 3389 $TARGET
+
+nmap -A -sV  -T5 --script=vnc* -p 5900 $TARGET
+
+nmap -A -sV -Pn -T5 --script=irc* -p 6667 $TARGET
+
+Scan 8443 as ssl
+
+
 
 '''
 
