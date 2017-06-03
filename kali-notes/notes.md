@@ -10,6 +10,8 @@ dpkg-reconfigure tzdata
 
 apt-get install xdotool
 
+apt-get install wicd-gtk
+
 
 python -c 'import pty;pty.spawn("/bin/bash")'
 
