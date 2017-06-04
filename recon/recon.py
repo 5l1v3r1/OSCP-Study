@@ -16,7 +16,6 @@ Code and influences taken from:
 https://github.com/codingo/Reconnoitre
 https://github.com/1N3/Sn1per
 
-whatweb
 searchsploit --nmap $LOOT_DIR/nmap/nmap-$TARGET.xml
 
 nmap -A -sV -T5 -Pn -p 513 --script=rlogin* $TARGET
@@ -56,14 +55,11 @@ def main():
     parser.add_argument("--hostnames",  dest="hostname_scan", action="store_true", help="Attempt to discover target hostnames and write to 0-name.txt and hostnames.txt.", default=False)
     parser.add_argument("--quick",      dest="quick",   action="store_true", required=False, help="Move to the next target after performing a quick scan and writing first-round recommendations.", default=False)
     parser.add_argument("--quiet",      dest="quiet",   action="store_true", help="Supress banner and headers to limit to comma dilimeted results only.", default=False)
-    parser.add_argument("--exec",       dest="follow",  action="store_true", help="Execute shell comamnds from recommendations as they are discovered. Likely to lead to very long execute times depending on the wordlist being used.", default=False)
-    parser.add_argument("--simple_exec",dest="quickfollow",  action="store_true", help="Execute non-brute forcing shell comamnds only as they are discovered.", default=False)
-<<<<<<< HEAD
-    parser.add_argument("--stealth",    dest="")
-=======
+    parser.add_argument("--stealth",    dest="stealth", action="store_true", help="Only run non-intrusive scans to avoid tripping IDS", default=False)
     parser.add_argument("--use-msf",    dest="use-msf", action="store_true", help="Check common Metasploit exploits.", default=False)
-    parser.add_argument("--pdf-report", dest="pdf-report", action="store_true" help="Generate host report in PDF format", default=False)
->>>>>>> origin/master
+    parser.add_argument("--pdf-report", dest="pdf-report", action="store_true", help="Generate host report in PDF format", default=False)
+    parset.add_argument("--md-report",  dest="md-report", action="store_true", help="Generate host report in MD format for GIT.", default=False)
+    parser.add_argument("--brute-force",dest="brute-force", action="store_true", help="Attempt a brute force login attack on services using the Kali fasttrack.txt.  Caution!  This will drastily increase script run time.")
     arguments = parser.parse_args()
 
     if len(sys.argv) == 1:
