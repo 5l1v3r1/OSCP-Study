@@ -13,6 +13,9 @@ apt-get install xdotool
 apt-get install wicd-gtk
 
 
+set ExitOnSession false
+
+
 python -c 'import pty;pty.spawn("/bin/bash")'
 
 stty -echo
