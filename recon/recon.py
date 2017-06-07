@@ -41,7 +41,7 @@ Scan 8443 as ssl
 '''
 
 def print_banner():
-    print("Banner")
+    print("~~~Banner~~~\n")
 
 
 def main():

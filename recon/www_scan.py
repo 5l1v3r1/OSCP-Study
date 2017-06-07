@@ -10,6 +10,14 @@ nmap --script http-methods -p 80 192.168.118.187
 
 nmap --script http-methods -p 443 192.168.118.187
 
+xsstracer
+
+wafw00f
+
+whatweb
+
+
+
 '''
 
 def nikto_scan(ip_address, output_directory, port):
