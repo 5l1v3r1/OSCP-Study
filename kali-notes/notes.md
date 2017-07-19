@@ -23,7 +23,7 @@ stty -echo
 dpkg --get-selections | grep deinstall
 
 
-find / -user root -perm -4000 -print > 4000.txt
+cd
 
 curl -O http://pentestmonkey.net/tools/unix-privesc-check/unix-privesc-check-1.4.tar.gz
 tar xzfv unix-privesc-check-1.4.tar.gz
