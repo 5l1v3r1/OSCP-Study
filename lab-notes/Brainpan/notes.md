@@ -8,7 +8,7 @@ Started by finding the host on the network.
 
 ####Enumeration:
 
-```root@kali:~/brainpan# nmap -A -T4 192.168.118.185`
+```root@kali:~/brainpan# nmap -A -T4 192.168.118.185
 
 Starting Nmap 7.40 ( https://nmap.org ) at 2017-05-19 19:22 MDT
 Nmap scan report for 192.168.118.185
